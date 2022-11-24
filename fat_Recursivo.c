@@ -1,6 +1,7 @@
 #include <stdio.h>
+#include <time.h>
 
-long long int fatorial (long long int n) {
+long double fatorial (long double n) {
   if (n == 0 || n == 1) {
     return 1;
   }
@@ -9,8 +10,16 @@ long long int fatorial (long long int n) {
 }
 
 int main(void) {
+
+  clock_t start, end;
+  double execution_time;
+  start = clock();
   
-  printf("%lld\n", fatorial(10));
+  printf("%Lf\n", fatorial(1000000));
+
+  end = clock();
+  execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
+  printf("%lf",execution_time);
   
   return 0;
 }
