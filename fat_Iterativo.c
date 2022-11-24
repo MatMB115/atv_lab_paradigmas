@@ -1,8 +1,18 @@
 #include <stdio.h>
 #include <time.h>
 
-long double fatorial (int n) {
+long double fatorialDouble (int n) {
   long double resultado = 1;
+  
+  for(int i = 1; i <= n; i++) {
+    resultado = resultado * i;
+  }
+
+  return (resultado);
+}
+
+unsigned long long int fatorialInt (int n) {
+  long long int resultado = 1;
   
   for(int i = 1; i <= n; i++) {
     resultado = resultado * i;
@@ -15,10 +25,16 @@ int main(void) {
 
   clock_t start, end;
   double execution_time;
+  //Primeira metrica
   start = clock();
+  printf("%lld\n", fatorialInt(5));
+  end = clock();
+  execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
+  printf("%lf\n",execution_time);
   
-  printf("%Lf\n", fatorial(1000000));
-
+  //Segunda metrica
+  start = clock();
+  printf("%.0Lf\n", fatorialDouble(100));
   end = clock();
   execution_time = ((double)(end - start))/CLOCKS_PER_SEC;
   printf("%lf",execution_time);
